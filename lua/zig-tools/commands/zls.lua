@@ -9,11 +9,8 @@ zls.management = {}
 -- local config = _G.zigtools_config
 
 local terminal = require("toggleterm.terminal").Terminal
-local terminal_opts = {
-	direction = "vertical",
-	auto_scroll = true,
-	close_on_exit = false,
-}
+
+local config = _G.zigtools_config
 
 --- Check if ZLS is installed on system's PATH
 ---@return boolean
@@ -48,7 +45,7 @@ zls.install = function(force)
 					-- local download_engine = get_download_engine()
 					print("WIP")
 				elseif choice == "Build from source" then
-					local build = terminal:new(vim.tbl_extend("force", terminal_opts, {
+					local build = terminal:new(vim.tbl_extend("force", config.terminal, {
 						direction = "horizontal",
 					}))
 					build:toggle()
