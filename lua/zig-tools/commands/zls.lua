@@ -8,8 +8,6 @@ zls.management = {}
 
 local terminal = require("toggleterm.terminal").Terminal
 
-local config = _G.zigtools_config
-
 --- Check if ZLS is installed on system's PATH
 ---@return boolean
 local function is_zls_installed()
@@ -34,6 +32,7 @@ zls.install = function(force)
 		return
 	end
 
+	local config = _G.zigtools_config
 	vim.ui.select(
 		{ "GitHub releases", "Build from source" },
 		{ prompt = "Select an installation method for ZLS:" },
