@@ -167,7 +167,7 @@ _G.zigtools_config = {
     },
   }
 
-  -- option for toggleterm
+  -- Option for toggleterm
   -- see https://github.com/akinsho/toggleterm.nvim
   ---@type table
   terminal = {
