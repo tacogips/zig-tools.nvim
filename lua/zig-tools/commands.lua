@@ -7,8 +7,6 @@ local commands = {}
 commands.project = {}
 commands.zls = {}
 
-local config = _G.zigtools_config
-
 local utils = require("zig-tools.utils")
 
 local terminal = require("toggleterm.terminal").Terminal
@@ -24,6 +22,8 @@ commands.build = function()
 		)
 		return
 	end
+
+	local config = _G.zigtools_config
 
 	local cmd = "zig build"
 	---@diagnostic disable-next-line
@@ -57,6 +57,7 @@ commands.run = function(file_mode)
 		return
 	end
 
+	local config = _G.zigtools_config
 	local run = terminal:new(vim.tbl_extend("force", config.terminal, {
 		cmd = cmd,
 	}))
@@ -205,6 +206,7 @@ end
 --- Initialize zig-tools.nvim commands on `bufnr` buffer
 ---@param bufnr number Zig buffer number
 commands.init = function(bufnr)
+	local config = _G.zigtools_config
 	local cmds = {
 		build = commands.build,
 		run = commands.run,

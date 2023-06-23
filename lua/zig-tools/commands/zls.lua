@@ -6,8 +6,6 @@
 local zls = {}
 zls.management = {}
 
--- local config = _G.zigtools_config
-
 local terminal = require("toggleterm.terminal").Terminal
 
 local config = _G.zigtools_config
