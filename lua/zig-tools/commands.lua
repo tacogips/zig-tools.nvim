@@ -23,9 +23,8 @@ commands.build = function()
 		return
 	end
 
-	local config = _G.zigtools_config
-
 	local cmd = "zig build"
+	local config = _G.zigtools_config
 	---@diagnostic disable-next-line
 	local flags = config.project.flags.build
 	if not vim.tbl_isempty(flags) then
@@ -77,6 +76,7 @@ commands.fmt = function(files)
 		files[1] = vim.api.nvim_buf_get_name(0)
 	end
 
+	local config = _G.zigtools_config
 	-- Avoid using a for loop and iterating over files table if it only contains one file
 	-- to gain some small performance improvements
 	if #files == 1 then
@@ -112,6 +112,7 @@ commands.check = function(files)
 		files[1] = vim.api.nvim_buf_get_name(0)
 	end
 
+	local config = _G.zigtools_config
 	-- Avoid using a for loop and iterating over files table if it only contains one file
 	-- to gain some small performance improvements
 	if #files == 1 then
@@ -165,6 +166,8 @@ commands.project.task = function(task_name)
 
 	-- If a task name was provided then try to run it, otherwise open an interactive prompt to select a task
 	local task_names = vim.tbl_keys(tasks)
+	local config = _G.zigtools_config
+
 	if task_name then
 		if vim.tbl_contains(task_names, task_name) then
 			local run_task = terminal:new(vim.tbl_extend("force", config.terminal, {
