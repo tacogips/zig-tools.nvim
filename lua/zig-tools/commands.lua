@@ -57,6 +57,10 @@ commands.run = function(file_mode)
 	end
 
 	local config = _G.zigtools_config
+	local flags = config.project.flags.run
+	if not vim.tbl_isempty(flags) then
+		cmd = cmd .. " " .. table.concat(flags, " ")
+	end
 	local run = terminal:new(vim.tbl_extend("force", config.terminal, {
 		cmd = cmd,
 	}))
