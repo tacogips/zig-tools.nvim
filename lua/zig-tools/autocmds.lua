@@ -14,15 +14,15 @@ autocmds.setup = function()
 		return
 	end
 
-  local zig_tools_augroup = vim.api.nvim_create_augroup("ZigTools", {})
-  vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    group = zig_tools_augroup,
-    pattern = "*.zig",
-    callback = function(args)
-      commands.init(args.buf)
-    end,
-    desc = "Set up zig-tools.nvim commands",
-  })
+	local zig_tools_augroup = vim.api.nvim_create_augroup("ZigTools", {})
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+		group = zig_tools_augroup,
+		pattern = "*.zig",
+		callback = function(args)
+			commands.init(args.buf)
+		end,
+		desc = "Set up zig-tools.nvim commands",
+	})
 end
 
 return autocmds
